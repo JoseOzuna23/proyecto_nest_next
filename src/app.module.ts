@@ -19,8 +19,6 @@ import { AuthModule } from './auth/auth.module';
       autoLoadEntities:true,
       synchronize: true,
 
-
-
     }),
     AuthModule,
   ],
