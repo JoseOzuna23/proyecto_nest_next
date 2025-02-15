@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PROPERTY_DEPS_METADATA } from '@nestjs/common/constants';
 import { AuthModule } from './auth/auth.module';
+import { ProductosModule } from './productos/productos.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { AuthModule } from './auth/auth.module';
 
     }),
     AuthModule,
+    ProductosModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
