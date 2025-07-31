@@ -3,6 +3,9 @@ import { ProductosService } from './productos.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { PaginacionDto } from 'src/common/dtos/paginacion.dto';
+import { Auth } from 'src/auth/decorador/auth.decorator';
+import { ValidRoles } from 'src/auth/interfaces';
+
 
 @Controller('productos')
 export class ProductosController {
@@ -14,6 +17,7 @@ export class ProductosController {
   }
 
   @Get()
+  @Auth(ValidRoles.user, ValidRoles.superUser) 
   findAll(@Query()paginacionDto:PaginacionDto) {
     console.log(paginacionDto)
     return this.productosService.findAll(paginacionDto);
