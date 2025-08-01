@@ -9,6 +9,7 @@ import { ProductosModule } from './productos/productos.module';
 import { CommonModule } from './common/common.module';
 import { EstudiantesModule } from './estudiantes/estudiantes.module';
 import { ProfesoresModule } from './profesores/profesores.module';
+import { CuotasModule } from './cuotas/cuotas.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ProfesoresModule } from './profesores/profesores.module';
     CommonModule,
     EstudiantesModule,
     ProfesoresModule,
+    CuotasModule,
   ],
   controllers: [AppController],
   providers: [AppService],
