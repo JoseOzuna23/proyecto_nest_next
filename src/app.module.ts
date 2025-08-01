@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { ProductosModule } from './productos/productos.module';
 import { CommonModule } from './common/common.module';
 import { EstudiantesModule } from './estudiantes/estudiantes.module';
+import { ProfesoresModule } from './profesores/profesores.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { EstudiantesModule } from './estudiantes/estudiantes.module';
     ProductosModule,
     CommonModule,
     EstudiantesModule,
+    ProfesoresModule,
   ],
   controllers: [AppController],
   providers: [AppService],
