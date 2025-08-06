@@ -1,4 +1,5 @@
-import { IsInt, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString } from "class-validator";
+import { Curso } from "src/cursos/entities/curso.entity";
 
 
 export class CreateCuotaDto {
@@ -18,7 +19,8 @@ export class CreateCuotaDto {
     @IsOptional()
     cantidad?: number;
 
-
+    @IsNotEmpty()    
+    curso: Curso;  
 
 
 }

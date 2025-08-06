@@ -8,8 +8,8 @@ export class CuotasController {
   constructor(private readonly cuotasService: CuotasService) {}
 
   @Post()
-  create(@Body() createCuotaDto: CreateCuotaDto) {
-    return this.cuotasService.create(createCuotaDto);
+ async create(@Body() createCuotaDto: CreateCuotaDto) {
+    return await this.cuotasService.create(createCuotaDto);
   }
 
   @Get()

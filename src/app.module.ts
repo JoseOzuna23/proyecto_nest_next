@@ -10,6 +10,7 @@ import { CommonModule } from './common/common.module';
 import { EstudiantesModule } from './estudiantes/estudiantes.module';
 import { ProfesoresModule } from './profesores/profesores.module';
 import { CuotasModule } from './cuotas/cuotas.module';
+import { CursosModule } from './cursos/cursos.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { CuotasModule } from './cuotas/cuotas.module';
     EstudiantesModule,
     ProfesoresModule,
     CuotasModule,
+    CursosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

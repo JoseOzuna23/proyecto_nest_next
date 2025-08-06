@@ -10,10 +10,10 @@ export class CuotasService {
 
   constructor(
     @InjectRepository(Cuota)
-    private readonly cuotaRepository: Repository<Cuota>,    
-  ) {}
+    private readonly cuotaRepository: Repository<Cuota>,
+  ) { }
 
- async create(createCuotaDto: CreateCuotaDto) {
+  async create(createCuotaDto: CreateCuotaDto) {
 
     try {
       const cuota = this.cuotaRepository.create(createCuotaDto);
@@ -23,26 +23,25 @@ export class CuotasService {
       // Handle exception (e.g., log it, rethrow it, etc.)
       throw error;
     }
-    
+
   }
 
-  findAll() {
-    return this.cuotaRepository.find();
+  async findAll() {
+    return await this.cuotaRepository.find();
   }
 
   async findOne(id: string) {
-    let cuota: Cuota;
-    const queryBuilder = this.cuotaRepository.createQueryBuilder();
-    cuota = await queryBuilder
-      .where('id =:id', {
-        id: id,
-      }).getOne();
+    const queryBuilder = this.cuotaRepository.createQueryBuilder('cuota');
+    const cuota = await queryBuilder
+      .leftJoinAndSelect('cuota.curso', 'curso')
+      .where('cuota.id = :id', { id })
+      .getOne();
 
     if (!cuota) {
       throw new NotFoundException(`Cuota con id ${id} no encontrada`);
     }
     return cuota;
-    
+
   }
 
   async update(id: string, updateCuotaDto: UpdateCuotaDto) {
@@ -53,18 +52,18 @@ export class CuotasService {
     if (!cuota) throw new NotFoundException(`Cuota con id ${id} no encontrada`);
 
     try {
-     await this.cuotaRepository.save(cuota);
+      await this.cuotaRepository.save(cuota);
       return cuota;
     } catch (error) {
       // Handle exception (e.g., log it, rethrow it, etc.)
       throw error;
     }
-   
+
   }
 
   async remove(id: string) {
     const cuota = await this.findOne(id);
     await this.cuotaRepository.remove(cuota);
-    
+
   }
 }
