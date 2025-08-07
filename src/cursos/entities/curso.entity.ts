@@ -1,4 +1,5 @@
 import { Cuota } from "src/cuotas/entities/cuota.entity";
+import { Inscripcion } from "src/inscripciones/entities/inscripcion.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -28,5 +29,8 @@ export class Curso {
 
     @OneToMany(() => Cuota, (cuota) => cuota.curso)
     cuotas: Cuota[];
+
+    @OneToMany(() => Inscripcion, (inscripcion) => inscripcion.curso)
+    inscripcion: Inscripcion[];
 
 }

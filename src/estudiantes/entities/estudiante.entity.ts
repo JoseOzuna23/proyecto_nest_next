@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Estado } from "../interfaces";
+import { Inscripcion } from "src/inscripciones/entities/inscripcion.entity";
 
 @Entity()
 export class Estudiante {
@@ -43,4 +44,7 @@ export class Estudiante {
         default: Estado.ACTIVO,
     })
     estado: Estado;
+
+    @OneToMany(() => Inscripcion, (inscripcion) => inscripcion.estudiante)
+    inscripcion: Inscripcion[];
 }

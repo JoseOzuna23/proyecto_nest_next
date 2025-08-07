@@ -27,7 +27,9 @@ export class CuotasService {
   }
 
   async findAll() {
-    return await this.cuotaRepository.find();
+    return await this.cuotaRepository.find({
+      relations: ['curso'],
+    });
   }
 
   async findOne(id: string) {
