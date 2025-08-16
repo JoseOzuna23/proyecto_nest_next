@@ -34,8 +34,7 @@ export class AuthService {
       delete user.password;
 
       return {
-        ...user,
-      token: this.getJwtToken({id: user.id})
+         message: 'Usuario registrado exitosamente',
       };
 
 
@@ -47,8 +46,6 @@ export class AuthService {
   }
 
   async login(loginUserDto: LoginUserDto) {
-
-
     const { password, email } = loginUserDto;
     const user = await this.userRepository.findOne({
       where: { email },
@@ -56,18 +53,12 @@ export class AuthService {
     })
 
     if (!user) 
-
-      throw new UnauthorizedException('El correo no es valido');
-
-    
+      throw new UnauthorizedException('El correo no es valido');   
 
     if (!bcrypt.compareSync(password, user.password)) 
-
-      throw new UnauthorizedException('La contraseña no es valida');
-    
+      throw new UnauthorizedException('La contraseña no es valida');  
       
-    return {
-      ...user,
+    return {      
       token: this.getJwtToken({ id: user.id })
     };
   }

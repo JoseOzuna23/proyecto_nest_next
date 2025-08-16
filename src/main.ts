@@ -12,6 +12,6 @@ async function bootstrap() {
     whitelist: true,            // Elimina las propiedades no definidas en el DTO
     forbidNonWhitelisted: true, // Lanza un error si hay propiedades no permitidas
   }));
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 4100);
 }
 bootstrap();

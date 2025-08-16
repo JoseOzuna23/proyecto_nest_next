@@ -7,7 +7,7 @@ export class CreateUserDto{
     email:string;
 
     @IsString()
-    @MinLength(6)
+    @MinLength(8)
     @MaxLength(50)
     @Matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,{

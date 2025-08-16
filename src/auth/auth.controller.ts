@@ -8,6 +8,7 @@ import { UserRoleGuard } from './guards/user-role/user-role.guard';
 import { RoleProtected } from './decorador/role-protected/role-protected.decorator';
 import { ValidRoles } from './interfaces';
 import { Auth } from './decorador/auth.decorator';
+import e from 'express';
 
 
 
@@ -55,16 +56,17 @@ export class AuthController {
   }
 
 
-  @Get('private3')
-  @Auth(ValidRoles.admin, ValidRoles.superUser)
+  @Get('autenticated')
+  @Auth(ValidRoles.user, ValidRoles.superUser)
  
   privateRoute3(
     @GetUser() user:User
   ){
-    return{
-      ok:true,
-      user
-    }
+    return{     
+      email: user.email,
+      fullName: user.fullName,
+  
+        }
  
   }
 
